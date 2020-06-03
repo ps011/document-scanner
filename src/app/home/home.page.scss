@@ -1,27 +1,62 @@
 #container {
+  display: flex;
+  flex-direction: column;
+  margin: 32px 0 0 0;
+  position: relative;
   text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  height: 100vh;
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+.cta {
+  flex-grow: 1;
+  justify-content: center;
+  animation: scanIt 0.8s cubic-bezier(0.87, 0.12, 0.25, 1);
+  .nav-link {
+    background: linear-gradient(to bottom left, #3ccbcc 60%, #4bb0e6 80%, #54b0ff);
+    color: #000;
+    margin: 12px;
+  }
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
+.recent-items {
+  flex-grow: 5;
+  display: block;
+  padding-top: 32px;
+  background: rgb(31,34,81);
+  margin: 16px 16px 0 16px;
+  border-radius: 10% 10% 0 0;
+  align-self: end;
+  animation: recentItems 0.8s cubic-bezier(0.87, 0.12, 0.25, 1);
+  .nav {
+    justify-content: center;
+  }
+  .nav-link {
+    background: linear-gradient(to bottom left, #1746cc 60%, #397ee6 80%, #47b3ff);
+    margin: 12px;
+  }
 
-  color: #8c8c8c;
-
-  margin: 0;
+  button {
+    position: absolute;
+    right: 25px;
+    margin-top: -25px;
+    font-size: 0.75rem;
+  }
 }
 
-#container a {
-  text-decoration: none;
+@keyframes recentItems {
+  0% {
+    transform: translateY(200%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes scanIt {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }

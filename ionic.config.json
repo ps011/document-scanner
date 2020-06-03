@@ -1,7 +1,8 @@
 {
   "name": "document-scanner",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {},
+    "cordova": {}
   },
   "type": "angular"
 }
