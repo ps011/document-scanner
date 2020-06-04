@@ -1,29 +1,33 @@
 #container {
   display: flex;
   flex-direction: column;
-  margin: 32px 0 0 0;
+  align-items: center;
   position: relative;
   text-align: center;
   height: 100vh;
+  overflow: hidden;
 }
 
 .cta {
-  flex-grow: 1;
+  position: absolute;
+  top: 10vh;
   justify-content: center;
   animation: scanIt 0.8s cubic-bezier(0.87, 0.12, 0.25, 1);
   .nav-link {
     background: linear-gradient(to bottom left, #3ccbcc 60%, #4bb0e6 80%, #54b0ff);
     color: #000;
-    margin: 12px;
+
   }
 }
 
 .recent-items {
-  flex-grow: 5;
+  position: absolute;
+  padding: 48px 16px 16px 16px;
+  bottom: 0;
+  height: 70vh;
+  overflow: scroll;
   display: block;
-  padding-top: 32px;
   background: rgb(31,34,81);
-  margin: 16px 16px 0 16px;
   border-radius: 10% 10% 0 0;
   align-self: end;
   animation: recentItems 0.8s cubic-bezier(0.87, 0.12, 0.25, 1);
