@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  // baseUrl: 'https://document-scanner-services.herokuapp.com',
   baseUrl: 'http://localhost:3000',
   CLOUDINARY_URL: 'https://api.cloudinary.com/v1_1/designu/raw/upload'
 };

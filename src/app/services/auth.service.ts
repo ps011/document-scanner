@@ -20,4 +20,17 @@ export class AuthService {
   loginWithFacebook() {
     return this.http.get(`${environment.baseUrl}/users/facebook`);
   }
+
+  register(name, username, email, password, mobile) {
+    return this.http.post(`${environment.baseUrl}/users/create`, {username, password, name, email, mobile});
+  }
+
+  validateToken() {
+    return this.http.get(`${environment.baseUrl}/users/validate`, {
+      observe: 'response',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    });
+  }
 }
