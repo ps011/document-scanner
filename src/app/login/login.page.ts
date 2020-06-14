@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-
+    showLoading: boolean;
   constructor(public authService: AuthService, private router: Router) { }
 
   ngOnInit() {
@@ -20,11 +20,15 @@ export class LoginPage implements OnInit {
   }
 
   login(userIdentifier, password) {
+    this.showLoading = true;
     this.authService.login(userIdentifier, password)
         .subscribe((data: any) => {
           localStorage.setItem('token', data.token);
           this.router.navigate(['/home']);
+        }, error => {
+            console.log(error);
         });
+    this.showLoading = false;
   }
 
   loginWithGoogle() {

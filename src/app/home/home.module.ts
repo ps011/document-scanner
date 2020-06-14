@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 import { Camera } from '@ionic-native/camera/ngx';
 import { HomePageRoutingModule } from './home-routing.module';
+import {NavigationComponent} from '../navigation/navigation.component';
 
 
 @NgModule({
@@ -14,7 +15,7 @@ import { HomePageRoutingModule } from './home-routing.module';
     IonicModule,
     HomePageRoutingModule
   ],
-  declarations: [HomePage],
+  declarations: [HomePage, NavigationComponent],
   providers: [
       Camera
   ]
