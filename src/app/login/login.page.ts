@@ -14,7 +14,7 @@ export class LoginPage implements OnInit {
   ngOnInit() {
       this.authService.validateToken().subscribe((response: any) => {
         if (response.status === 200) {
-            this.router.navigate(['/home']);
+            this.router.navigate(['/nav/home']);
         }
       });
   }
@@ -24,7 +24,7 @@ export class LoginPage implements OnInit {
     this.authService.login(userIdentifier, password)
         .subscribe((data: any) => {
           localStorage.setItem('token', data.token);
-          this.router.navigate(['/home']);
+          this.router.navigate(['/nav/home']);
         }, error => {
             console.log(error);
         });
