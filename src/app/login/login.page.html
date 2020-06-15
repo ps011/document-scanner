@@ -1,29 +1,42 @@
 <div class="login">
-  <div class="input-group">
-    <div class="input-group-prepend">
-      <span class="input-group-text"><i class="fa fa-user"></i></span>
+    <img src="https://via.placeholder.com/150" alt="Logo" class="logo">
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fa fa-user"></i></span>
+        </div>
+        <input type="email" id="usernameInput" class="form-control" placeholder="Username/Email" #username>
     </div>
-    <input type="email" class="form-control" placeholder="Username/Email" #username>
-  </div>
 
-  <div class="input-group">
-    <div class="input-group-prepend">
-      <span class="input-group-text"><i class="fa fa-lock"></i></span>
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fa fa-lock"></i></span>
+        </div>
+        <input type="password" class="form-control" placeholder="Password" #password>
     </div>
-    <input type="password" class="form-control" placeholder="Password" #password>
-  </div>
 
-  <button class="btn btn-info" (click)="login(username.value, password.value)">Login</button>
-  <button class="btn btn-link">Forgot Password</button>
-  <button class="btn btn-link" [routerLink]="['/register']">New User? Register</button>
-      <a class="btn btn-outline-dark" role="button" style="text-transform:none" (click)="loginWithGoogle()">
-        <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+    <button class="btn btn-info login-cta" (click)="login(username.value, password.value)">Login</button>
+    <button class="btn btn-link">Forgot Password</button>
+    <button class="btn btn-link" [routerLink]="['/register']">New User? Register</button>
+    <a class="btn btn-outline-dark" role="button" style="text-transform:none" (click)="loginWithGoogle()">
+        <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in"
+             src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"/>
         <p style="display: inline; margin-left: 4px">Login with Google</p>
-      </a>
+    </a>
 
     <a class="btn btn-outline-dark" role="button" style="text-transform:none" (click)="loginWithFacebook()">
-      <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in" src="https://facebookbrand.com/wp-content/uploads/2019/04/f_logo_RGB-Hex-Blue_512.png?w=512&h=512" />
-      <p style="display: inline; margin-left: 4px">Login with Facebook</p>
+        <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in"
+             src="https://facebookbrand.com/wp-content/uploads/2019/04/f_logo_RGB-Hex-Blue_512.png?w=512&h=512"/>
+        <p style="display: inline; margin-left: 4px">Login with Facebook</p>
     </a>
 </div>
 <app-loader *ngIf="showLoading"></app-loader>
+
+<div *ngIf="showError" role="alert" class="alert alert-danger alert-with-icon alert-dismissible">
+    <button aria-label="Close" class="close" type="button">
+        <span aria-hidden="true" (click)="dismissToast()">×</span>
+        <span class="sr-only">Close</span>
+    </button>
+    <span>
+        {{errorText}}
+    </span>
+</div>

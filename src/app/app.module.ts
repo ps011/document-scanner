@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -29,6 +29,7 @@ import {HttpClientModule} from '@angular/common/http';
       DocsService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
+  schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
