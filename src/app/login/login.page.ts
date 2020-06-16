@@ -28,6 +28,7 @@ export class LoginPage implements OnInit {
     this.authService.login(userIdentifier, password)
         .subscribe((data: any) => {
           localStorage.setItem('token', data.token);
+          localStorage.setItem('user', JSON.stringify(data.user));
           this.router.navigate(['/nav/home']);
         }, error => {
            this.showError = true;

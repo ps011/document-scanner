@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Camera, CameraOptions} from '@ionic-native/camera/ngx';
 import {DocsService} from '../services/docs.service';
 import {FileTransfer, FileUploadOptions, FileTransferObject} from '@ionic-native/file-transfer/ngx';
@@ -9,7 +9,8 @@ import {environment} from '../../environments/environment';
     templateUrl: 'home.page.html',
     styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
+    recentDocs = [];
     cameraOptions: CameraOptions = {
         quality: 100,
         destinationType: this.camera.DestinationType.NATIVE_URI,
@@ -19,6 +20,16 @@ export class HomePage {
 
     constructor(public transfer: FileTransfer, public camera: Camera, public docsService: DocsService) {
     }
+
+
+    ngOnInit() {
+        const user = localStorage.getItem('user');
+        this.docsService.getAllDocs(JSON.parse(user).id)
+            .subscribe((docs: any) => {
+                this.recentDocs = docs;
+            });
+    }
+
 
     takeSnap() {
         this.camera.getPicture(this.cameraOptions).then(async imageData => {
@@ -76,6 +87,5 @@ export class HomePage {
 //      "access_mode": "authenticated"
 //    }
     }
-
 
 }

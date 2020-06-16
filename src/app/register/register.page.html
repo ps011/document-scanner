@@ -43,3 +43,14 @@
     <p style="display: inline; margin-left: 4px">Register using Facebook</p>
   </a>
 </div>
+<app-loader *ngIf="showLoading"></app-loader>
+
+<div *ngIf="showError" role="alert" class="alert alert-danger alert-with-icon alert-dismissible">
+  <button aria-label="Close" class="close" type="button">
+    <span aria-hidden="true" (click)="dismissToast()">×</span>
+    <span class="sr-only">Close</span>
+  </button>
+  <span>
+        {{errorText}}
+    </span>
+</div>

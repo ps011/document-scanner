@@ -7,16 +7,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
-
+    showLoading: boolean;
+    showError: boolean;
+    errorText: string;
   constructor(public authService: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
 
   register(name, username, email, password, mobile) {
+    this.showLoading = true;
     this.authService.register(name, username, email, password, mobile)
         .subscribe((data: any) => {
-          console.log(data);
           if (data._id &&  data.name && data.username) {
             this.authService.login(data.email, data.password)
                 .subscribe((login: any) => {
@@ -24,7 +26,17 @@ export class RegisterPage implements OnInit {
                   this.router.navigate(['/home']);
                 });
           }
+        }, error => {
+            this.showError = true;
+            if (error.status === 0) {
+                this.errorText = 'There is some issue in Network Connection. Unable to Register';
+            } else if (error.status === 401) {
+                this.errorText = 'Username/Password combination not found. Unable to Login';
+            } else if (error.status === 400) {
+                this.errorText = 'Enter Username/Password';
+            }
         });
+    this.showLoading = false;
   }
 
   registerWithGoogle() {
@@ -40,5 +52,10 @@ export class RegisterPage implements OnInit {
           console.log(data);
         });
   }
+
+
+    dismissToast() {
+        this.showError = false;
+    }
 
 }

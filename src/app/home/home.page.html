@@ -6,7 +6,7 @@
                    (click)="takeSnap()">
                     <span></span><i class="tim-icons icon-camera-18"></i> Scan </a></div>
         </div>
-        <div class="recent-items">
+        <div class="recent-items" *ngIf="recentDocs.length; else noDocs">
             <button class="btn btn-sm btn-default btn-round">
                 View All <i class="tim-icons icon-minimal-right"></i>
             </button>
@@ -58,6 +58,12 @@
         </div>
     </div>
 </ion-content>
-<div class="navigation">
-    <app-navigation></app-navigation>
-</div>
+
+
+<ng-template #noDocs>
+    <div role="alert" class="alert alert-info">
+        <span>
+        No Documents Found 😕. <br>Scan one to see that here.
+    </span>
+    </div>
+</ng-template>

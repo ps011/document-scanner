@@ -20,6 +20,14 @@
   }
 }
 
+.alert {
+  position: absolute;
+  left: 32px;
+  right: 32px;
+  top: 50%;
+  text-align: center;
+}
+
 .recent-items {
   position: absolute;
   padding: 48px 16px 16px 16px;

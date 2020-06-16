@@ -13,7 +13,11 @@ export class DocsService {
     return this.http.post(`${environment.baseUrl}/docs/create`, body);
   }
 
-  readDoc(id) {
+  getDoc(id) {
     return this.http.get(`${environment.baseUrl}/docs/${id}`);
+  }
+
+  getAllDocs(id) {
+    return this.http.get(`${environment.baseUrl}/docs/user/${id}`);
   }
 }
